@@ -29,16 +29,15 @@ fun findMaxAverage(nums: IntArray, k: Int): Double {
         subArraySum += nums[i]
     }
 
-    var maxAverage = subArraySum / k
+    var maxAverage = subArraySum
 
     for (i in k until nums.size) {
         subArraySum = subArraySum + nums[i] - nums[i - k]
-        val localAverage = subArraySum / k
 
-        maxAverage = maxAverage.coerceAtLeast(localAverage)
+        maxAverage = maxAverage.coerceAtLeast(subArraySum)
     }
 
-    return maxAverage
+    return maxAverage / k
 }
 
 fun main() {
