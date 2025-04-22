@@ -44,6 +44,21 @@ fun checkIfPangram(sentence: String): Boolean {
     return false
 }
 
+// This is a just a better solution, but slightly less readable
+fun checkIfPangram2(sentence: String): Boolean {
+    val booleanArray = BooleanArray(TOTAL_CHARACTERS_IN_THE_ENGLISH_ALPHABET)
+    var uniqueCharsFoundCounter = 0
+
+    for (i in 0 until sentence.length) {
+        if (booleanArray[sentence[i] - 'a'].not()) {
+            booleanArray[sentence[i] - 'a'] = true
+            uniqueCharsFoundCounter++
+        }
+    }
+
+    return uniqueCharsFoundCounter == TOTAL_CHARACTERS_IN_THE_ENGLISH_ALPHABET
+}
+
 fun main() {
     val input = "thequickbrownfoxjumpsoverthelazydog"
     println("Pangram status: ${checkIfPangram(input)}")
