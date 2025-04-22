@@ -27,17 +27,21 @@ package problems.datastructuresandalgorithms.hashing
 const val TOTAL_CHARACTERS_IN_THE_ENGLISH_ALPHABET = 26
 
 fun checkIfPangram(sentence: String): Boolean {
+    if (sentence.length < TOTAL_CHARACTERS_IN_THE_ENGLISH_ALPHABET) {
+        return false
+    }
+
     val foundCharacters = hashSetOf<Char>()
 
-    sentence.forEach { it ->
-        foundCharacters.add(it)
+    for (i in 0 until sentence.length) {
+        foundCharacters.add(sentence[i])
 
         if (foundCharacters.size == TOTAL_CHARACTERS_IN_THE_ENGLISH_ALPHABET) {
             return true
         }
     }
 
-    return foundCharacters.size == TOTAL_CHARACTERS_IN_THE_ENGLISH_ALPHABET
+    return false
 }
 
 fun main() {
